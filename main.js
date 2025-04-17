@@ -1,28 +1,3 @@
-/* <script> 
-    let countdown = 3;
-    let countdownElement = document.getElementById('countdown');
-    let interval = setInterval(function() {
-        countdown--;
-        if (countdownElement) {
-            countdownElement.textContent = countdown;
-        }
-        if (countdown <= 0) {
-            clearInterval(interval);
-            const message = document.getElementById('success-message');
-            if (message) {
-                message.style.display = 'none';
-            }
-        }
-    }, 1000); // Run every second
-    </script> 
-            <?php
-        if (isset($_SESSION['success'])) {
-            echo '<div id="success-message">'.$_SESSION['success'].' <span id="countdown">5</span> seconds remaining...</div>';
-            unset($_SESSION['success']);
-        }
-        ?>
-    */
-
     // Delete confirmation
     function confirmDelete(id) {
         var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
