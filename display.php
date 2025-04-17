@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
                         VALUES (?,?,?,?,?,?,?,?,?,?)");
         $sql->bind_param("ssssssssss",$name,$sex,$idNumber,$department,$campus,$pcSerialNumber,$pcModel,$contact,$photo,$year);
                          if ($sql->execute()) {
-                            echo "<script> alert(`New record created successfully`)</script>";
+                            $_SESSION['success'] = "Student record Added successfully";
                             header("location: display.php");
                             exit();
                         } else {
