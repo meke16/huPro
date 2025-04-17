@@ -63,11 +63,9 @@ if (isset($_POST['submit'])) {
     }
 
     // Update the data in the 'students' table using prepared statement
-    $sql = "UPDATE `students` SET name=?, sex=?, idNumber=?, department=?, 
-            campus=?, pcSerialNumber=?, pcModel=?, contact=?, photo=?, year=? WHERE id=?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param(
-        $stmt,
+    $sql = $conn->prepare("UPDATE `students` SET name=?, sex=?, idNumber=?, department=?, 
+            campus=?, pcSerialNumber=?, pcModel=?, contact=?, photo=?, year=? WHERE id=?");
+    $sql->bind_param(
         "ssssssssssi",
         $name,
         $sex,
@@ -82,11 +80,12 @@ if (isset($_POST['submit'])) {
         $id
     );
 
-    $result = mysqli_stmt_execute($stmt);
+    $result = $sql->execute();
     
     // Check if the query was successful
     if ($result) {
-        header("Location: display.php");
+        echo "<script> window.location.href='display.php'; alert('data updated successfully!'); </script>";
+        // header("Location: display.php");
         exit();
     } else {
         die(mysqli_error($conn));
@@ -131,11 +130,11 @@ if (isset($_POST['submit'])) {
                 </select>
             </div>
             <div class="form-group mb-3">
-                <label for="section">Student Id</label>
+                <label for="stu id">Student Id</label>
                 <input type="text" class="form-control" id="grade" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required>
             </div>
             <div class="form-group mb-3">
-                <label for="section">Department</label>
+                <label for="department">Department</label>
                 <input type="text" class="form-control" id="section" placeholder="Enter department" name="department" autocomplete="off" value="<?php echo htmlspecialchars($department) ?>" required>
             </div>
             <div class="form-group mb-3">
@@ -188,7 +187,6 @@ if (isset($_POST['submit'])) {
             <button type="submit" class="btn btn-primary" name="submit">Update</button>
         </form>
     </div>
-
     <footer>
         <p>© 2025 Your Company. All rights reserved.</p>
     </footer>
