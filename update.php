@@ -61,6 +61,11 @@ if (isset($_POST['submit'])) {
             $_SESSION['error'] = 'Only JPG, JPEG, PNG files are allowed for photo.';
         }
     }
+    $sql_check = $conn->query("SELECT id FROM `students` WHERE `id` != '$id' and `idNumber` = '$idNumber';");
+    if($sql_check->num_rows > 0) {
+        $_SESSION['error'] = 'student By this Id already exist!.';   
+    } 
+    else {
 
     // Update the data in the 'students' table using prepared statement
     $sql = $conn->prepare("UPDATE `students` SET name=?, sex=?, idNumber=?, department=?, 
@@ -85,11 +90,12 @@ if (isset($_POST['submit'])) {
     // Check if the query was successful
     if ($result) {
         echo "<script> window.location.href='display.php'; alert('data updated successfully!'); </script>";
-        // header("Location: display.php");
+        // header(header: "Location: display.php");
         exit();
     } else {
         die(mysqli_error($conn));
     }
+}
 }
 ?>
 

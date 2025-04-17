@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
     // Validate inputs
     if (empty($name)) {
         $_SESSION['error'] = 'Name is required.';
-    } elseif (empty($idNumber)) {
+    } elseif (empty($idNumber) && strlen($idNumber >= 4)) {
         $_SESSION['error'] = 'ID Number is required.';
     } elseif (empty($department)) {
         $_SESSION['error'] = 'Department is required.';
@@ -155,7 +155,7 @@ $num = 0;
     <title>PC Checkup System - Haramaya University</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css?v=v1">
+    <link rel="stylesheet" href="styles.css?v=v2">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         
@@ -163,7 +163,7 @@ $num = 0;
 </head>
 
 <body>
-<header class="header text-center">
+<header class="header text-center no-print">
         <h1>PC Checkup System</h1>
         <p class="lead mt-2">Haramaya University - <?php echo $current_year; ?></p>
     </header>
@@ -183,7 +183,7 @@ $num = 0;
             </div>
         <?php endif; ?>
 
-        <div class="d-flex justify-content-between mb-4 no-print">
+        <div class="d-flex justify-content-between mb-4 no-print buto1">
             <a href="home.php" class="btn btn-secondary">
                 <i class="bi bi-arrow-left"></i> Go Back
             </a>
@@ -263,7 +263,7 @@ $num = 0;
                             <option value="7">Seven Year</option>
                         </select>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label class="form-label">Photo (Optional)</label>
                         <input type="file" class="form-control" name="photo" id="photo" accept="image/jpeg, image/png">
                         <div class="form-text">Only JPG/PNG images accepted</div>
