@@ -19,7 +19,13 @@ if (isset($_GET['get_student'])) {
     exit();
 }
 
-// Handle form submission
+/* I use again and again for user input
+ built fuction mysqli_real_escape_string
+ to escape special char and prevent system from
+ crashing and I use for input only under control of user */
+
+ // Handle form submission
+
 if (isset($_POST['submit'])) {
     $name = ucwords(strtolower($_POST['name']));
     $sex = $_POST['sex'];
@@ -28,7 +34,7 @@ if (isset($_POST['submit'])) {
     $campus = $_POST['campus']; // Fixed campus name
     $pcSerialNumber = mysqli_real_escape_string($conn, $_POST['pcSerialNumber']);
     $pcModel = mysqli_real_escape_string($conn, $_POST['pcModel']);
-    $contact = $_POST['contact'];
+    $contact = mysqli_real_escape_string($conn, $_POST['contact']);
     $year = $_POST['year'];
     
     // Handle file upload
@@ -70,9 +76,10 @@ if (isset($_POST['submit'])) {
     }
     else {
         // Insert new student
-        $sql = "INSERT INTO students (name, sex, idNumber, department, campus, pcSerialNumber, pcModel, contact, photo, year) 
-                        VALUES ('$name', '$sex', '$idNumber', '$department', '$campus', '$pcSerialNumber', '$pcModel', '$contact', '$photo', '$year')";
-                         if ($conn->query($sql) === TRUE) {
+        $sql = $conn->prepare("INSERT INTO students (name, sex, idNumber, department, campus, pcSerialNumber, pcModel, contact, photo, year) 
+                        VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $sql->bind_param("ssssssssss",$name,$sex,$idNumber,$department,$campus,$pcSerialNumber,$pcModel,$contact,$photo,$year);
+                         if ($sql->execute()) {
                             echo "<script> alert(`New record created successfully`)</script>";
                             header("location: display.php");
                             exit();
@@ -116,7 +123,7 @@ $whereConditions = [];
 foreach ($searchTerms as $term) {
     $term = trim($term); 
     if (!empty($term)) {
-        $escapedTerm = mysqli_real_escape_string($conn, $term); 
+        $escapedTerm = mysqli_real_escape_string($conn, $term);  
 
         $whereConditions[] = "(name LIKE '%$escapedTerm%' OR idNumber LIKE '%$escapedTerm%' OR department LIKE '%$escapedTerm%')";
     }
@@ -387,7 +394,7 @@ $num = 0;
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="8" class="text-center">No PC checkup records found for <?php echo $year; ?>.</td>
+                            <td colspan="8" class="text-center">No PC checkup records found for <?php echo $current_year; ?>.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
