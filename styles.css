@@ -1,0 +1,52 @@
+.header {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+.cl1 {
+    font-size: 0.7rem;
+}
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #003366;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
+    overflow-y: auto;
+}
+.overlay-content {
+    background-color:rgba(204, 207, 208, 0.8);
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 800px;
+}
+.detail-row {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.detail-label {
+    font-weight: bold;
+    color: #003366;
+}
+.detail-info {
+    font-weight: bold;
+    color:rgb(0, 6, 6);
+}
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}

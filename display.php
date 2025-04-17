@@ -155,56 +155,10 @@ $num = 0;
     <title>PC Checkup System - Haramaya University</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css?v=v1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        .header {
-            background-color: #003366;
-            color: white;
-            padding: 20px 0;
-            margin-bottom: 30px;
-        }
-        .cl1 {
-            font-size: 0.7rem;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #003366;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            background-color:rgba(204, 207, 208, 0.8);
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 800px;
-        }
-        .detail-row {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        .detail-label {
-            font-weight: bold;
-            color: #003366;
-        }
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-        }
+        
     </style>
 </head>
 
@@ -429,6 +383,6 @@ $num = 0;
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="main.js"></script>
+    <script src="main.js?v=v1"></script>
 </body>
 </html>

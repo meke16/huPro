@@ -29,35 +29,35 @@
                     <div class="profile-details">
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">Gender:</div>
-                            <div class="col-md-8">${student.sex}</div>
+                            <div class="col-md-8 detail-info">${student.sex}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">ID Number:</div>
-                            <div class="col-md-8">${student.idNumber}</div>
+                            <div class="col-md-8 detail-info">${student.idNumber}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">Department:</div>
-                            <div class="col-md-8">${student.department}</div>
+                            <div class="col-md-8 detail-info">${student.department}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">Batch:</div>
-                            <div class="col-md-8">${student.year}</div>
+                            <div class="col-md-8 detail-info">${student.year}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">Campus:</div>
-                            <div class="col-md-8">${student.campus}</div>
+                            <div class="col-md-8 detail-info">${student.campus}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">PC Serial Number:</div>
-                            <div class="col-md-8">${student.pcSerialNumber}</div>
+                            <div class="col-md-8 detail-info">${student.pcSerialNumber}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">PC Model:</div>
-                            <div class="col-md-8">${student.pcModel || 'Not specified'}</div>
+                            <div class="col-md-8 detail-info">${student.pcModel || 'Not specified'}</div>
                         </div>
                         <div class="row detail-row">
                             <div class="col-md-4 detail-label">Contact:</div>
-                            <div class="col-md-8">${student.contact || 'Not provided'}</div>
+                            <div class="col-md-8 detail-info">${student.contact || 'Not provided'}</div>
                         </div>
                     </div>
                 `;
