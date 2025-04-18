@@ -25,12 +25,6 @@
             width: 300px;
         }
 
-        h1 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
         button {
             background-color: #007BFF;
             color: white;
@@ -58,7 +52,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>student pc Registration</h1>
+        <h2>student pc Checkup System</h2>
         <a href="display.php"><button>Get-In</button></a>
     </div>
 </body>

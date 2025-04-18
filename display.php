@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
     $contact = mysqli_real_escape_string($conn, $_POST['contact']);
     $year = $_POST['year'];
     
+
     // Handle file upload
     $photo = '';
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
@@ -64,7 +65,7 @@ if (isset($_POST['submit'])) {
     // Validate inputs
     if (empty($name)) {
         $_SESSION['error'] = 'Name is required.';
-    } elseif (empty($idNumber) && strlen($idNumber >= 4)) {
+    } elseif (empty($idNumber)) {
         $_SESSION['error'] = 'ID Number is required.';
     } elseif (empty($department)) {
         $_SESSION['error'] = 'Department is required.';
@@ -125,7 +126,7 @@ foreach ($searchTerms as $term) {
     if (!empty($term)) {
         $escapedTerm = mysqli_real_escape_string($conn, $term);  
 
-        $whereConditions[] = "(name LIKE '%$escapedTerm%' OR idNumber LIKE '%$escapedTerm%' OR department LIKE '%$escapedTerm%')";
+        $whereConditions[] = "(name LIKE '%$escapedTerm%' OR idNumber LIKE '%$escapedTerm%')";
     }
 }
 
@@ -216,8 +217,9 @@ $num = 0;
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">ID Number</label>
-                        <input type="text" class="form-control" name="idNumber" id="idNumber" required>
-                        <div class="invalid-feedback">Please enter ID number.</div>
+                        <input type="text" class="form-control" name="idNumber" id="idNumber" required minlength="4">
+                        <div class="invalid-feedback">Please enter correct ID number.</div>
+                        <div class="form-text">Id number at least 4 charachter long.</div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="department">Department</label>
@@ -282,7 +284,7 @@ $num = 0;
 
         <div class="search-box no-print my-3">
             <form method="POST" class="input-group">
-                <input autocomplete="off" type="search" class="form-control" placeholder="Search by name, ID or department..." 
+                <input autocomplete="off" type="search" class="form-control" placeholder="Search by name or ID..." 
                     name="search_query" value="<?php echo htmlspecialchars($searchQuery); ?>">
                 <button type="submit" class="btn btn-primary" name="search">
                     <i class="bi bi-search"></i> Search

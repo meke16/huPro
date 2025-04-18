@@ -137,11 +137,12 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group mb-3">
                 <label for="stu id">Student Id</label>
-                <input type="text" class="form-control" id="grade" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required>
+                <input type="text" class="form-control" id="grade" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required minlength="4">
             </div>
             <div class="form-group mb-3">
                 <label for="department">Department</label>
                 <input type="text" class="form-control" id="section" placeholder="Enter department" name="department" autocomplete="off" value="<?php echo htmlspecialchars($department) ?>" required>
+                <div class="invalid-feedback">Please enter correct ID number.</div>
             </div>
             <div class="form-group mb-3">
                 <label class="form-label">Campus</label>
