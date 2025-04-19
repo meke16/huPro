@@ -115,7 +115,16 @@ if (isset($_POST['submit'])) {
     <div class="container">
         <!-- Display error messages if any -->
         <?php if (isset($_SESSION['error'])): ?>
-            <div class="alert alert-danger"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
+            <div class="alert alert-danger text-center" id="error-message"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?> </div>
+            <script>
+                 setTimeout(function(){
+                    const alertElement = document.getElementById('error-message');
+                    if (alertElement) {
+                        var bootstrapAlert = new bootstrap.Alert(alertElement);
+                        bootstrapAlert.close(); // Close the error alert
+                    }
+                } , 5000)
+            </script>
         <?php endif; ?>
         
         <!-- Form to update student data -->

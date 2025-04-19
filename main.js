@@ -77,25 +77,6 @@
     function closeProfile() {
         $('#profileOverlay').hide();
     }
-
-    // Form validation
-    (function() {
-        'use strict'
-        
-        var forms = document.querySelectorAll('.needs-validation')
-        
-        Array.prototype.slice.call(forms)
-            .forEach(function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-                    
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
     // Array of departments in Haramaya University (Example)
     const departments = [
             // College of Agriculture and Environmental Sciences (CAES)
@@ -184,3 +165,4 @@
         option.textContent = department;
         departmentSelect.appendChild(option);
     });
+

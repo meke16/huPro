@@ -93,17 +93,17 @@ if (isset($_POST['submit'])) {
 if (isset($_GET['deleteid'])) {
     $id = mysqli_real_escape_string($conn, $_GET['deleteid']);
     
-    // First get photo path to delete the file
-    $sql_photo = "SELECT photo FROM students WHERE id='$id'";
-    $result = $conn->query($sql_photo);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (!empty($row['photo']) && file_exists($row['photo'])) {
-            unlink($row['photo']);
-        }
-    }
+    // // First get photo path to delete the file
+    // $sql_photo = "SELECT photo FROM students WHERE id='$id'";
+    // $result = $conn->query($sql_photo);
+    // if ($result->num_rows > 0) {
+    //     $row = $result->fetch_assoc();
+    //     if (!empty($row['photo']) && file_exists($row['photo'])) {
+    //         unlink($row['photo']);
+    //     }
+    // }
     
-    $sql = "DELETE FROM students WHERE id='$id'";
+    $sql = "DELETE  FROM students WHERE id='$id'";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['success'] = "Student record deleted successfully";
     } else {
@@ -156,11 +156,8 @@ $num = 0;
     <title>PC Checkup System - Haramaya University</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css?v=v2">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        
-    </style>
 </head>
 
 <body>
@@ -171,21 +168,20 @@ $num = 0;
 
     <div class="container">
         <?php if (isset($_SESSION['error'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+            <!-- <div class="alert alert-danger text-center"  id="error-message"> -->
+            <div class="alert alert-danger text-center error-alert" id="error-message">
                 <?= $_SESSION['error']; unset($_SESSION['error']); ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
         
         <?php if (isset($_SESSION['success'])): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
+            <div class="alert alert-success text-center success-alert" id="success-message">
                 <?= $_SESSION['success']; unset($_SESSION['success']); ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
 
         <div class="d-flex justify-content-between mb-4 no-print buto1">
-            <a href="home.php" class="btn btn-secondary">
+            <a href="index.php" class="btn btn-secondary">
                 <i class="bi bi-arrow-left"></i> Go Back
             </a>
             <button class="btn btn-primary" onclick="window.print()">
@@ -355,10 +351,10 @@ $num = 0;
                     <?php endif; ?>
                 </tbody>
             </table>
-        </div>
+        </di$v>
     </div>
 
-    <!-- Delete Confirmation Modal -->
+    <!-- Delete Confirmation Modal section -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -377,7 +373,7 @@ $num = 0;
         </div>
     </div>
 
-    <!-- Profile View Overlay -->
+    <!-- Profile View Overlay section -->
     <div id="profileOverlay" class="overlay">
         <div class="overlay-content">
         <button style="margin-left: 86%;" class="btn btn-danger mt-1" onclick="closeProfile()">Close</button>
@@ -385,6 +381,24 @@ $num = 0;
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="main.js?v=v1"></script>
+    <script src="main.js"></script>
+    <script> 
+    //to remove alert messages after displayed in defined period of time (mine is 3-second).
+            setTimeout(function() {
+        const alertElement1 = document.getElementById('error-message');
+        const alertElement2 = document.getElementById('success-message');
+        
+        if (alertElement1) {
+            var bootstrapAlert1 = new bootstrap.Alert(alertElement1);
+            bootstrapAlert1.close(); 
+        }
+        
+        if (alertElement2) {
+            var bootstrapAlert2 = new bootstrap.Alert(alertElement2);
+            bootstrapAlert2.close(); 
+        }
+    }, 3000); 
+    </script>
+    </body>
 </body>
 </html>
