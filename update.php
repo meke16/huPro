@@ -146,7 +146,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group mb-3">
                 <label for="stu id">Student Id</label>
-                <input type="text" class="form-control" id="grade" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required minlength="4">
+                <input  type="text" class="form-control" id="grade" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required minlength="4">
             </div>
             <div class="form-group mb-3">
                 <label for="department">Department</label>
@@ -208,5 +208,6 @@ if (isset($_POST['submit'])) {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

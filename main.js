@@ -77,6 +77,7 @@
     function closeProfile() {
         $('#profileOverlay').hide();
     }
+    
     // Array of departments in Haramaya University (Example)
     const departments = [
             // College of Agriculture and Environmental Sciences (CAES)

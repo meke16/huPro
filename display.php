@@ -149,7 +149,6 @@ $num = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -159,7 +158,6 @@ $num = 0;
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
 <body>
 <header class="header text-center no-print">
         <h1>PC Checkup System</h1>
@@ -278,7 +276,7 @@ $num = 0;
             </div>
         </div>
 
-        <div class="search-box no-print my-3">
+        <div class="s   earch-box no-print my-3">
             <form method="POST" class="input-group">
                 <input autocomplete="off" type="search" class="form-control" placeholder="Search by name or ID..." 
                     name="search_query" value="<?php echo htmlspecialchars($searchQuery); ?>">
@@ -288,7 +286,7 @@ $num = 0;
             </form>
         </div>
 
-        <div class="table-responsive cl1">
+        <di$v class="table-responsive cl1">
             <table class="table table-hover zoom-table">
                 <thead class="table-dark">
                     <tr>
@@ -351,7 +349,7 @@ $num = 0;
                     <?php endif; ?>
                 </tbody>
             </table>
-        </di$v>
+        </div>
     </div>
 
     <!-- Delete Confirmation Modal section -->

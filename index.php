@@ -17,7 +17,7 @@
         }
 
         .container {
-            background-color: white;
+            background-color: rgb(18, 163, 151);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -53,7 +53,7 @@
 <body>
     <div class="container">
         <h2>student pc Checkup System</h2>
-        <a href="display.php"><button>Get-In</button></a>
+        <a href="display.php"><button>Click Here</button></a>
     </div>
 </body>
 </html>
