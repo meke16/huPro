@@ -193,7 +193,7 @@ $num = 0;
             </button>
 
             <div id="studentForm" class="collapse">
-                <form method="POST" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
+                <form  id="form1"method="POST" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
                     <input type="hidden" name="edit_id" id="edit_id" value="0">
                     <div class="col-md-6">
                         <label class="form-label">Full Name</label>
@@ -268,7 +268,7 @@ $num = 0;
                         <button type="submit" class="btn btn-success" name="submit">
                             <i class="bi bi-save"></i> Save Record
                         </button>
-                        <button type="button" class="btn btn-secondary" onclick="closeForm()">
+                        <button type="button" class="btn btn-danger" onclick="closeForm()">
                             <i class="bi bi-x"></i> Cancel
                         </button>
                     </div>
@@ -381,6 +381,11 @@ $num = 0;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
     <script> 
+        function closeForm() {
+        const formElement = document.getElementById('studentForm');
+        const collapseInstance = bootstrap.Collapse.getOrCreateInstance(formElement);
+        collapseInstance.hide(); // Collapse it
+    }
     //to remove alert messages after displayed in defined period of time (mine is 3-second).
             setTimeout(function() {
         const alertElement1 = document.getElementById('error-message');
@@ -396,6 +401,13 @@ $num = 0;
             bootstrapAlert2.close(); 
         }
     }, 3000); 
+    document.getElementById("form1").onsubmit = function(event) {
+            var idNumber = document.getElementById("idNumber").value;
+            if (idNumber.length < 4) {
+                alert("The ID number must be at least 4 characters long.");
+                event.preventDefault(); // Prevent form submission
+            }
+        };
     </script>
     </body>
 </body>

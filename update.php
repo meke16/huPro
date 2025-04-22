@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
             <h2 class="text-primary">Update Student Data</h2>
             <p class="lead">Please fill in the details below to update the student record.</p>
         </div>
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form id="form1" method="POST" action="" enctype="multipart/form-data">
             <div class="form-group mb-3">
                 <label for="name">Name of Student</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter Student's Name" name="name" autocomplete="off" value="<?php echo htmlspecialchars($name) ?>" required>
@@ -146,7 +146,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group mb-3">
                 <label for="stu id">Student Id</label>
-                <input  type="text" class="form-control" id="grade" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required minlength="4">
+                <input  type="text" class="form-control" id="idNumber" placeholder="Enter stu id" name="idNumber" autocomplete="off" value="<?php echo htmlspecialchars($idNumber) ?>" required minlength="4">
             </div>
             <div class="form-group mb-3">
                 <label for="department">Department</label>
@@ -208,6 +208,14 @@ if (isset($_POST['submit'])) {
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+            document.getElementById("form1").onsubmit = function(event) {
+            var idNumber = document.getElementById("idNumber").value;
+            if (idNumber.length < 4) {
+                alert("The ID number must be at least 4 characters long.");
+                event.preventDefault(); // Prevent form submission
+            }
+        };
+        </script>
 </body>
 </html>
