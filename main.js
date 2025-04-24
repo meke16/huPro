@@ -9,7 +9,7 @@
     // View student profile
     function viewProfile(id) {
         $.get('display.php', {
-            get_student: 1,
+            get_student:true,
             id: id
         }, function(data) {
             try {

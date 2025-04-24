@@ -4,7 +4,8 @@ session_start();
 $self = $_SERVER['PHP_SELF'];
 $current_year = date('Y'); // Current year for filtering
 
-// Handle AJAX student data request (for both edit and info)
+
+// Handle AJAX student data request (for info)
 if (isset($_GET['get_student'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql = "SELECT * FROM students WHERE id = '$id'";
@@ -18,7 +19,6 @@ if (isset($_GET['get_student'])) {
     }
     exit();
 }
-
 /* I use again and again for user input
  built fuction mysqli_real_escape_string
  to escape special char and prevent system from
@@ -27,7 +27,7 @@ if (isset($_GET['get_student'])) {
  // Handle form submission
 
 if (isset($_POST['submit'])) {
-    $name = ucwords(strtolower($_POST['name']));
+    $name = htmlspecialchars(ucwords(strtolower($_POST['name'])));
     $sex = $_POST['sex'];
     $idNumber = mysqli_real_escape_string($conn, $_POST['idNumber']);
     $department = ucwords(strtolower($_POST['department']));
@@ -93,16 +93,6 @@ if (isset($_POST['submit'])) {
 if (isset($_GET['deleteid'])) {
     $id = mysqli_real_escape_string($conn, $_GET['deleteid']);
     
-    // // First get photo path to delete the file
-    // $sql_photo = "SELECT photo FROM students WHERE id='$id'";
-    // $result = $conn->query($sql_photo);
-    // if ($result->num_rows > 0) {
-    //     $row = $result->fetch_assoc();
-    //     if (!empty($row['photo']) && file_exists($row['photo'])) {
-    //         unlink($row['photo']);
-    //     }
-    // }
-    
     $sql = "DELETE  FROM students WHERE id='$id'";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['success'] = "Student record deleted successfully";
@@ -161,7 +151,7 @@ $num = 0;
 <body>
 <header class="header text-center no-print">
         <h1>PC Checkup System</h1>
-        <p class="lead mt-2">Haramaya University - <?php echo $current_year; ?></p>
+        <p style="text-decoration: underline white;" class="lead mt-2">Haramaya University - <?php echo $current_year; ?></p>
     </header>
 
     <div class="container">
